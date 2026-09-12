@@ -6,13 +6,13 @@
 
 Secure, curated Arch Linux `PKGBUILD` recipes and package tooling for Arch Linux and Arch Linux ARM.
 
-This is the main repository for the Arch-Builds organization. It contains the packaging standard every recipe follows, the maintained package directories, repository documentation, and safe local validation helpers. The same tree is designed to work on both Forgejo and GitHub.
+This is the main repository for the Arch-Builds project. It contains the packaging standard every recipe follows, the maintained package directories, repository documentation, and safe local validation helpers. The same tree is designed to work on both Forgejo and GitHub.
 
 ## Repository map
 
 ```text
 Arch-Builds/
-├── assets/branding/       # organization and repository artwork
+├── assets/branding/       # project and repository artwork
 ├── standards/PKGBUILD/    # canonical, working PKGBUILD standard
 ├── packages/<pkgbase>/    # one self-contained package directory each
 ├── docs/                  # repository workflow and security model

@@ -1,6 +1,6 @@
 # Arch-Builds PKGBUILD Standard
 
-This directory is the canonical, versioned standard for every package maintained by the **Arch-Builds** Forgejo organization. New package directories start here, and changes to the standard are reviewed here first.
+This directory is the canonical, versioned standard for every package maintained by the **Arch-Builds** project. New package directories start here, and changes to the standard are reviewed here first.
 
 Current standard: **1.0.0**
 

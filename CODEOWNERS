@@ -1,6 +1,6 @@
 # Default owner and security-sensitive areas
-* @typezero
-/SECURITY.md @typezero
-/standards/ @typezero
-/scripts/ @typezero
-/.github/ @typezero
+* @MikereDD
+/SECURITY.md @MikereDD
+/standards/ @MikereDD
+/scripts/ @MikereDD
+/.github/ @MikereDD

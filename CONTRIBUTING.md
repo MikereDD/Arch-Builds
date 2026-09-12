@@ -4,7 +4,7 @@ All package work begins with the current files in `standards/PKGBUILD/` and foll
 
 ## Package changes
 
-1. Limit a change to one package unless it updates the organization-wide standard.
+1. Limit a change to one package unless it updates the project-wide standard.
 2. Read `PKGBUILD`, install scripts, patches, and every local source before running them.
 3. Update package metadata and integrity values from canonical upstream information.
 4. Regenerate `.SRCINFO`; never edit it manually.

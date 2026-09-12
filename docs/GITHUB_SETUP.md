@@ -38,7 +38,7 @@ Create a branch ruleset targeting the default branch:
 - Block force-pushes and branch deletion.
 - Apply the rule to administrators when practical.
 
-Repository-owned accounts may have fewer protection features on some GitHub plans. Organization ownership provides the strongest team and bypass controls.
+Repositories owned by a personal account may have fewer team and bypass controls than organization-owned repositories on some GitHub plans. Use the protections available for this repository and revisit the rules if ownership changes later.
 
 ## Security
 

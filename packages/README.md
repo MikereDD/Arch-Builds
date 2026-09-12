@@ -7,3 +7,9 @@ Before creating one, build and inspect the harmless [`arch-builds-example`](../s
 Do not place loose `PKGBUILD` files directly in this directory. A package directory must be self-contained, AUR-compatible, documented, and independently reviewable.
 
 The demonstration recipe remains under `standards/PKGBUILD/` and must never be published as production software.
+
+## Package catalog
+
+| Package | Architectures | Purpose |
+| --- | --- | --- |
+| [`deno-bin`](deno-bin/) | `x86_64`, `aarch64` | Official upstream Deno binary release |

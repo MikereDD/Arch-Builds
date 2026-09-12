@@ -1,0 +1,22 @@
+pkgbase = deno-bin
+	pkgdesc = Secure runtime for JavaScript and TypeScript (upstream binary release)
+	pkgver = 2.9.6
+	pkgrel = 1
+	url = https://deno.com
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = deno=2.9.6
+	conflicts = deno
+	conflicts = deno-git
+	options = !strip
+	source = LICENSE-2.9.6.md::https://raw.githubusercontent.com/denoland/deno/v2.9.6/LICENSE.md
+	sha256sums = f62497fffecc0852960c8d3e6934b9db86d16396e9b604072e923892cae3a588
+	source_x86_64 = deno-2.9.6-x86_64.zip::https://github.com/denoland/deno/releases/download/v2.9.6/deno-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 394f07f4da2bebe6ce6f1e7ce0fa16429b29b08c35e3fac3fe25972676dff4b2
+	source_aarch64 = deno-2.9.6-aarch64.zip::https://github.com/denoland/deno/releases/download/v2.9.6/deno-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 9a46afc6c392c7cd2ff71a31558935545b46408d0e87f7a86908c712721c046e
+
+pkgname = deno-bin

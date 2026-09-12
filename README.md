@@ -19,6 +19,10 @@ The first reference package is [`arch-builds-example`](standards/PKGBUILD/PKGBUI
 
 The demo is a teaching and validation fixture, not production software. Keep it under `standards/PKGBUILD/`; real packages belong in `packages/<pkgbase>/`.
 
+## Maintained packages
+
+- [`deno-bin`](packages/deno-bin/) — official upstream Deno binary release for `x86_64` and `aarch64`.
+
 ## Repository map
 
 ```text

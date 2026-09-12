@@ -1,0 +1,45 @@
+# Maintainer: Typezer∅
+# Arch-Builds-Standard: 1.0.0
+pkgname=deno-bin
+pkgver=2.9.6
+pkgrel=1
+pkgdesc='Secure runtime for JavaScript and TypeScript (upstream binary release)'
+arch=('x86_64' 'aarch64')
+url='https://deno.com'
+license=('MIT')
+depends=('glibc' 'gcc-libs')
+provides=("deno=$pkgver")
+conflicts=('deno' 'deno-git')
+options=('!strip')
+source=(
+  "LICENSE-$pkgver.md::https://raw.githubusercontent.com/denoland/deno/v$pkgver/LICENSE.md"
+)
+source_x86_64=(
+  "deno-$pkgver-x86_64.zip::https://github.com/denoland/deno/releases/download/v$pkgver/deno-x86_64-unknown-linux-gnu.zip"
+)
+source_aarch64=(
+  "deno-$pkgver-aarch64.zip::https://github.com/denoland/deno/releases/download/v$pkgver/deno-aarch64-unknown-linux-gnu.zip"
+)
+sha256sums=(
+  'f62497fffecc0852960c8d3e6934b9db86d16396e9b604072e923892cae3a588'
+)
+sha256sums_x86_64=(
+  '394f07f4da2bebe6ce6f1e7ce0fa16429b29b08c35e3fac3fe25972676dff4b2'
+)
+sha256sums_aarch64=(
+  '9a46afc6c392c7cd2ff71a31558935545b46408d0e87f7a86908c712721c046e'
+)
+
+check() {
+  local version_output
+
+  version_output=$(DENO_NO_UPDATE_CHECK=1 DENO_DIR="$srcdir/deno-cache" \
+    "$srcdir/deno" --version)
+  [[ $version_output == "deno $pkgver"$'\n'* ]]
+}
+
+package() {
+  install -Dm755 "$srcdir/deno" "$pkgdir/usr/bin/deno"
+  install -Dm644 "$srcdir/LICENSE-$pkgver.md" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+}

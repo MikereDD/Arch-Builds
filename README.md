@@ -8,6 +8,17 @@ Secure, curated Arch Linux `PKGBUILD` recipes and package tooling for Arch Linux
 
 This is the main repository for the Arch-Builds project. It contains the packaging standard every recipe follows, the maintained package directories, repository documentation, and safe local validation helpers. The same tree is designed to work on both Forgejo and GitHub.
 
+## Start here: first demo PKGBUILD
+
+The first reference package is [`arch-builds-example`](standards/PKGBUILD/PKGBUILD), a harmless, working demonstration of the complete Arch-Builds packaging standard. It installs a tiny shell command, manual page, and license using only committed local sources, so every part is easy to inspect before building.
+
+- Review the example [`PKGBUILD`](standards/PKGBUILD/PKGBUILD) and generated [`.SRCINFO`](standards/PKGBUILD/.SRCINFO).
+- Follow the [demo build and inspection guide](standards/PKGBUILD/README.md).
+- Use [Adopting the standard](standards/PKGBUILD/docs/ADOPTING_THE_STANDARD.md) when turning the example into a real package.
+- Complete the [review checklist](standards/PKGBUILD/docs/REVIEW_CHECKLIST.md) before merging or publishing.
+
+The demo is a teaching and validation fixture, not production software. Keep it under `standards/PKGBUILD/`; real packages belong in `packages/<pkgbase>/`.
+
 ## Repository map
 
 ```text

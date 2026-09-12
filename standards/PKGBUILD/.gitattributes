@@ -1,0 +1,8 @@
+* text=auto eol=lf
+PKGBUILD text eol=lf
+.SRCINFO text eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+*.1 text eol=lf
+*.png binary
+*.pkg.tar.* binary

@@ -1,0 +1,17 @@
+# makepkg output
+*.pkg.tar.*
+*.pkg.tar.*.sig
+*.src.tar.*
+*.log
+pkg/
+src/
+
+# local secrets and editor files
+.env
+.env.*
+*.key
+*.pem
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

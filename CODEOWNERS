@@ -1,0 +1,6 @@
+# Default owner and security-sensitive areas
+* @typezero
+/SECURITY.md @typezero
+/standards/ @typezero
+/scripts/ @typezero
+/.github/ @typezero

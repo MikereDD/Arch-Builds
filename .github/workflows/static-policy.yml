@@ -1,0 +1,81 @@
+name: Static repository checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: static-policy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static-policy:
+    name: Static policy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository without persisted credentials
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+
+      - name: Check required repository files
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            README.md
+            CONTRIBUTING.md
+            SECURITY.md
+            CODEOWNERS
+            standards/PKGBUILD/PKGBUILD
+            standards/PKGBUILD/.SRCINFO
+            standards/PKGBUILD/STANDARD_VERSION
+          )
+          for path in "${required[@]}"; do
+            test -f "$path" || { printf 'Missing required file: %s\n' "$path" >&2; exit 1; }
+          done
+
+      - name: Check Bash syntax without executing repository code
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' path; do
+            bash -n "$path"
+          done < <(find . -type f \( -name '*.sh' -o -name PKGBUILD \) -print0)
+
+      - name: Reject tracked build products and secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          forbidden='(^|/)(pkg|src)/|\.pkg\.tar\.|\.src\.tar\.|\.log$|(^|/)\.env($|\.)|\.(key|pem|p12|pfx|kbx)$|private-keys-v1\.d/'
+          if git ls-files | grep -E "$forbidden"; then
+            printf 'Tracked build product or secret-like file detected\n' >&2
+            exit 1
+          fi
+
+      - name: Check PKGBUILD policy markers
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' path; do
+            grep -q '^# Arch-Builds-Standard: ' "$path" || {
+              printf '%s does not declare its Arch-Builds standard version\n' "$path" >&2
+              exit 1
+            }
+            if grep -En "[\"']http://" "$path"; then
+              printf 'Insecure HTTP source in %s\n' "$path" >&2
+              exit 1
+            fi
+          done < <(find standards packages -type f -name PKGBUILD -print0)
+
+      - name: Check patch whitespace
+        shell: bash
+        run: git show --check --format= --no-renames HEAD

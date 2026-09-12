@@ -1,0 +1,34 @@
+# Maintainer: Typezer∅
+# Arch-Builds-Standard: 1.0.0
+pkgname=arch-builds-example
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Harmless reference package demonstrating the Arch-Builds packaging standard'
+arch=('any')
+url='https://arakiel.tail7db97a.ts.net/Arch-Builds/Arch-Builds'
+license=('MIT')
+depends=('bash')
+source=(
+  'arch-builds-example.sh'
+  'arch-builds-example.1'
+  'LICENSE'
+)
+sha256sums=(
+  'cf88fb8b90b8064382eb2c47408b86caefa2d541d2639e4429298b022b2bfd2a'
+  '6463b4f014757a579cc775f594e08e680d3f341416b4394aff980f2869d61a9d'
+  '638d40f3ad760d16e6c7a58c8e15b5d05c35f132bdc010ae50fea6d9cb8d75f7'
+)
+
+check() {
+  bash -n "$srcdir/arch-builds-example.sh"
+  test "$(bash "$srcdir/arch-builds-example.sh" --version)" = "arch-builds-example $pkgver"
+}
+
+package() {
+  install -Dm755 "$srcdir/arch-builds-example.sh" \
+    "$pkgdir/usr/bin/arch-builds-example"
+  install -Dm644 "$srcdir/arch-builds-example.1" \
+    "$pkgdir/usr/share/man/man1/arch-builds-example.1"
+  install -Dm644 "$srcdir/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
